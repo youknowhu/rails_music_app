@@ -1,0 +1,13 @@
+<table>
+  <tr>
+    <th>Index</th>
+    <th>Band Name</th>
+  </tr>
+
+  <% @bands.each do |band| %>
+    <tr>
+      <th><%=band.id%></th>
+      <th><a class='button' href="<%= band_url(band) %>"><%=band.name%></a></th>
+    </tr>
+  <% end %>
+</table>

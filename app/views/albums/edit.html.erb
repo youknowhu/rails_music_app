@@ -1,0 +1,47 @@
+<form action="<%= album_url(@album) %>" method= "POST">
+  <input
+    type="hidden"
+    name="_method"
+    value="PATCH">
+  <input
+  type="hidden"
+  name="authenticity_token"
+  value='<%= form_authenticity_token %>'
+  />
+  Band:
+  <br />
+  <select name="album[band_id]">
+    <% @bands.each do |band| %>
+      <% if band.id == @album.band_id %>
+        <option selected="selected" value="<%= band.id %>"> <%= band.name %> </option>
+      <% else %>
+        <option value="<%= band.id %>"> <%= band.name %> </option>
+      <% end %>
+    <% end %>
+  </select>
+
+  <label for="title"> Title
+    <input type="text" name="album[title]" value="<%=@album.title%>">
+  </label>
+
+  <label for="year"> Year
+    <input type="text" name="album[year]"  value="<%=@album.year%>">
+  </label>
+
+  Location:
+  <div>
+    <label for="studio" class="radio"> Studio
+      <input type="radio" name="album[location]" value="studio"
+        <%= @album.location == "studio" ? "checked" : ""%> >
+    </label>
+
+    <label for="Live" class="radio"> Live
+      <input type="radio" name="album[location]" value="live"
+      <%= @album.location == "live" ? "checked" : ""%> >
+    </label>
+  </div>
+
+
+  <button>Update Album</button>
+
+</form>

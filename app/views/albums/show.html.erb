@@ -1,0 +1,23 @@
+
+ <li><a class='button' href="<%= edit_album_url(@album) %>">Edit album</a></li>
+
+
+<h3> <%= @album.title %></h3>
+<p>
+  Band: <%= @band.name %> <br />
+  Year: <%= @album.year %> <br />
+  Location: <%= @album.location %> <br />
+</p>
+
+<li><a class='button' href="<%= new_album_track_url(@album) %>">
+  Add Track
+</a></li>
+
+<ul>
+  <% @album.tracks.each do |track| %>
+    <li><a class='button' href="<%= track_url(track) %>">
+      <%=track.title%>
+    </a></li>
+    <br />
+  <% end %>
+</ul>

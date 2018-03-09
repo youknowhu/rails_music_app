@@ -1,0 +1,26 @@
+
+ <li><a class='button' href="<%= edit_track_url(@track) %>">Edit Track</a></li>
+
+<h3> <a class='button' href="<%= album_url(@album) %>"><%= @track.title %></a>< </h3>
+<p>
+  Album: <%= @track.album.title %> <br />
+  Track Type: <%= @track.track_type %> <br />
+  Track No: <%= @track.ord %> <br />
+  Lyrics: <%= @track.lyrics %>
+</p>
+
+<br>
+<br>
+
+<h4>
+  Comments:
+</h4>
+<ol>
+  <% @track.notes.each do |note| %>
+    <li>
+      <%= note.note %>
+      - <%= note.user.email %>
+    </li>
+    <br />
+  <% end %>
+</ol>
